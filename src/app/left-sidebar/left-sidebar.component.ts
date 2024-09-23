@@ -33,6 +33,11 @@ export class LeftSidebarComponent {
       icon: 'fal fa-cog',
       label: 'Settings',
     },
+    {
+      routeLink: 'voucher',
+      icon: 'fal fa-ticket-alt',
+      label: 'Bons d\'achat',
+    },
   ];
 
   toggleCollapse(): void {

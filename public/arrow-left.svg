@@ -1,0 +1,9 @@
+<svg id="Composant_94_1" data-name="Composant 94 – 1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Rectangle_609" data-name="Rectangle 609" fill="#f5f5f5" stroke="#21515e" stroke-width="0.1" opacity="0.4">
+    <rect width="30" height="30" rx="5" stroke="none"/>
+    <rect x="0.05" y="0.05" width="29.9" height="29.9" rx="4.95" fill="none"/>
+  </g>
+  <g id="Composant_1" data-name="Composant 1" transform="translate(10.168 10.168)">
+    <path id="Tracé_10" data-name="Tracé 10" d="M4.779,0,3.91.869,7.2,4.159H0V5.4H7.2L3.91,8.689l.869.869L9.558,4.779Z" transform="translate(9.558 9.558) rotate(180)" fill="#00b3d7"/>
+  </g>
+</svg>

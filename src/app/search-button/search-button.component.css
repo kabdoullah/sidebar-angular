@@ -1,0 +1,27 @@
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-btn {
+    transition: width 0.3s ease;
+    width: auto; /* Ajustez selon vos besoins */
+}
+
+.search-btn:hover {
+    color: blue; /* Change la couleur du texte au survol */
+}
+
+.search-input {
+    margin-left: 10px;
+    transition: width 0.3s ease;
+    width: 0; /* Commence à 0 pour masquer */
+    opacity: 0; /* Commence à 0 pour masquer */
+    visibility: hidden; /* Masque l'élément */
+}
+
+.search-input.ng-enter {
+    width: 150px; /* Largeur à atteindre */
+    opacity: 1;
+    visibility: visible; /* Affiche l'élément */
+}

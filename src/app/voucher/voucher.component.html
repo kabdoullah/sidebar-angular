@@ -1,0 +1,116 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h2>Bons d'achat</h2>
+        <div>
+            <button class="btn btn-warning me-2">Seuil d'alerte</button>
+            <button class="btn btn-warning me-2">Exporter</button>
+            <button class="btn btn-primary">Ajouter un bon d'achat</button>
+        </div>
+    </div>
+
+    <div class="card mt-4 ">
+        <div class="card-header d-flex justify-content-between align-items-center bg-white">
+            <div>
+                <button type="button" class="btn btn-text" [class.active]="activeButton() === 'all'"
+                    [ngStyle]="{ width: activeButton() === 'all' ? '164px' : null }" (click)="setActiveButton('active')"
+                    (click)="setActiveButton('all')">
+                    Tous les bons d'achat
+                </button>
+
+                <button type="button" class="btn btn-text" [class.active]="activeButton() === 'active'"
+                    [ngStyle]="{ width: activeButton() === 'active' ? '69px' : null }"
+                    (click)="setActiveButton('active')">
+                    Actif
+                </button>
+
+                <button type="button" class="btn btn-text" [class.active]="activeButton() === 'disabled'"
+                    [ngStyle]="{ width: activeButton() === 'disabled' ? '90px' : null }"
+                    (click)="setActiveButton('disabled')">
+                    Désactivé
+                </button>
+            </div>
+            <div>
+                <div class="input-group mb-3">
+                    <input type="button" class="form-control" placeholder="Recherche" aria-label="Recherche"
+                        value="Recherche">
+                    <button class="btn btn-outline-secondary fal fa-calendar" type="button"> Button</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table text-center" style="margin-bottom: 0 !important;">
+                    <thead class="custom-thead">
+                        <tr>
+                            <th class="text-center">Référence</th>
+                            <th class="text-center">Date</th>
+                            <th class="text-center">Montant</th>
+                            <th class="text-center">Quantité</th>
+                            <th class="text-center">Dernière mise à jour</th>
+                            <th class="text-center">Statut</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="custom-tbody">
+                        @for(bon of bonsAchat; track $index) {
+                        <tr>
+                            <td class="text-center">{{ bon.reference }}</td>
+                            <td class="text-center">{{ bon.date }}</td>
+                            <td class="text-center">{{ bon.montant }}</td>
+                            <td class="text-center">{{ bon.quantite }}</td>
+                            <td class="text-center">{{ bon.maj }}</td>
+                            <td class="text-center">
+                                @if(bon.statut === 'Actif'){
+                                <span class="badge rounded-pill text-bg-success text-center">{{ bon.statut }}</span>
+                                }
+                                @if(bon.statut === 'Inactif'){
+                                <span class="badge rounded-pill bg-danger">{{ bon.statut }}</span>
+                                }
+                            </td>
+                            <td class="text-center">
+                                <button class="btn fal fa-eye"> Détails</button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="dropdown custom-dropdown">
+            <button class="btn btn-secondary custom-dropdown-btn" type="button" id="dropdownMenuButton"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                10
+
+            </button>
+            <i class="fal fa-chevron-down ms-1" style="color: #272727; font-size: 12px;"></i>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">20</a>
+                <a class="dropdown-item" href="#">30</a>
+                <a class="dropdown-item" href="#">40</a>
+            </div>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item  me-2">
+                    <a class="page-link chervon" aria-label="Previous" (click)="goToPreviousPage()">
+                        <i class="fal fa-chevron-left"></i>
+                    </a>
+                </li>
+                @for (page of pages; track $index) {
+                <li class="page-item me-2"><a class="page-link" [class.current-page-link]="page === currentPage">{{
+                        $index + 1 }}</a></li>
+                }
+                <li class="page-item">
+                    <a class="page-link chervon" aria-label="Next" (click)="goToNextPage()">
+                        <i class="fal fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>

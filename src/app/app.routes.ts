@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { ProductsComponent } from './products/products.component';
 import { SettingsComponent } from './settings/settings.component';
+import { VoucherComponent } from './voucher/voucher.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -10,4 +11,5 @@ export const routes: Routes = [
     { path: 'products', component: ProductsComponent },
     { path: 'settings', component: SettingsComponent },
     { path: 'pages', component: PagesComponent },
+    { path: 'voucher', component: VoucherComponent }
 ];
