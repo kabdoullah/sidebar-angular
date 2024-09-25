@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output, signal, SimpleChanges } from '@angular/core';
 import { SearchButtonComponent } from "../search-button/search-button.component";
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: 'app-voucher',
   standalone: true,
-  imports: [CommonModule, SearchButtonComponent],
+  imports: [CommonModule, SearchButtonComponent, ModalComponent],
   templateUrl: './voucher.component.html',
   styleUrl: './voucher.component.css'
 })
@@ -18,13 +19,23 @@ export class VoucherComponent {
   ];
 
   activeButton = signal('all');
-  isSearchActive = signal(false); 
+  isSearchActive = signal(false);
 
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 5;
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   pages: number[] = [];
+
+  isModalOpened = false;
+  openModal(): void {
+    console.log('openModal');
+    this.isModalOpened = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpened = false;
+  }
 
   ngOnInit(): void {
     this.updatePages();
@@ -63,14 +74,6 @@ export class VoucherComponent {
       this.pageChange.emit(this.currentPage);
     }
   }
-
-
-  formatPageNumber(page: number): string {
-    return page < 10 ? '0' + page : '' + page;
-  }
-  // toggleSearch() {
-  //   this.isExpanded.set(!this.isExpanded()); // Inverse l'état
-  // }
 
   setActiveButton(button: string) {
     this.activeButton.set(button);
