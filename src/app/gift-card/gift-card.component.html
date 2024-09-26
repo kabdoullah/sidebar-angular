@@ -1,0 +1,93 @@
+<div class="container-fluid mt-5">
+    <div class="row">
+        <!-- Colonne du formulaire -->
+        <div class="col-12 col-md-6 right-card">
+            <div class="form-section">
+                <h2 class="h2-title">Offrez des bons d'achat</h2>
+                <p class="p-des fs-6">Faites briller les yeux de vos proches avec les bons d’achat Bon Coin. Parce que
+                    le plus beau des cadeaux, c’est celui
+                    qui laisse le choix !</p>
+
+                <!-- Montant -->
+                <div class="mb-3">
+                    <label for="amount" class="montant-title">Montant</label>
+                    <p class="p-d">Veuillez sélectionner ou renseigner le montant de votre bon d’achat</p>
+                    <!-- For desktop and tablets -->
+                    <div class="preset-amounts-buttons d-none d-md-block">
+                        @for (amount of presetAmounts; track $index) {
+                        <button class="btn amount-button me-3"
+                            [ngClass]="{'amount-button-active': selectedAmount === amount, 'me-3': $index !== presetAmounts.length - 1}"
+                            (click)="selectAmount(amount)">
+                            {{amount}} FCFA
+                        </button>
+                        }
+                    </div>
+
+                    <!-- For mobile -->
+                    <div class="preset-amounts-select d-block d-md-none w-100">
+                        <select class="form-select">
+                            @for(amount of presetAmounts; track $index){
+                            <option [value]="amount" [selected]="selectedAmount === amount">
+                                {{amount}} FCFA
+                            </option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="input-group amount-input my-3 w-100">
+                        <input type="number" class="form-control" placeholder="Saisissez le montant"
+                            [(ngModel)]="customAmount">
+                        <div class="input-group-append">
+                            <span class="input-group-text">FCFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantité -->
+                <div style="margin-bottom: 70px;">
+                    <label for="quantity" class="quantity-title">Quantité</label>
+                    <p class="p-d">Veuillez renseigner la quantité de votre bon</p>
+                    <div class="input-group quantity-input">
+                        <button class="btn qty-button fs-3" (click)="decreaseQuantity()"
+                            [disabled]="quantity <= 1">-</button>
+                        <input type="text" class="form-control text-center" [(ngModel)]="quantity">
+                        <button class="btn qty-button fs-3" (click)="increaseQuantity()">+</button>
+                    </div>
+                </div>
+
+                <!-- Boutons d'action -->
+                <div class="d-flex justify-content-between align-items-center fixed-action-buttons">
+                    <button class="btn btn-add me-1" (click)="addToCart()">Ajouter au panier</button>
+                    <button class="btn btn-checkout ms-1" (click)="checkout()">Passer à la caisse</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Colonne de l'image -->
+        <div class="col-12 col-md-6 p-0">
+            <div class="card left-card text-center">
+                <h4 class="title-m">Offrez des bons d’achat</h4>
+                <img [src]="selectedCategory?.image || 'assets/barcode.png'" alt="barcode" class="img-fluid">
+                <div class="mt-3">
+
+                    <h5 class="h-title">Catégorie de bon</h5>
+                    <p class="p-desc">Choisissez la carte qui fera plaisir à vos proches</p>
+                    <div class="row categories-list-wrapper">
+                        <div class="categories-list">
+                            @for (category of categories; track $index) {
+                            <div (click)="selectCategory(category)" class="col-6 col-sm-4 mb-2">
+                                <div class="card text-center small-card">
+                                    <img [src]="category.image" alt="category" class="img-fluid">
+                                    <p class="cat-name">{{category.name}}</p>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

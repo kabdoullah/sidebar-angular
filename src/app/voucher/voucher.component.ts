@@ -22,7 +22,7 @@ export class VoucherComponent {
   isSearchActive = signal(false);
 
   @Input() currentPage: number = 1;
-  @Input() totalPages: number = 5;
+  @Input() totalPages: number = 10;
   @Output() pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   pages: number[] = [];
@@ -56,7 +56,8 @@ export class VoucherComponent {
 
   goToPreviousPage(): void {
     if (this.currentPage > 1) {
-      this.currentPage--;
+      this.currentPage--
+;
       this.pageChange.emit(this.currentPage);
     }
   }

@@ -1,0 +1,260 @@
+.left-card {
+    width: auto;
+    height: auto;
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    padding: 100px;
+    border: none;
+
+}
+
+.right-card {
+    padding: 100px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+
+}
+
+.form-section {
+    width: 80%;
+}
+
+.small-card {
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: none;
+    margin-right: 10px;
+}
+
+.cat-name {
+    text-align: center;
+    font: normal normal medium 14px/17px Proxima Nova;
+    letter-spacing: 0px;
+    color: #272727;
+    padding-top: 5px;
+}
+
+.p-desc {
+    font: normal normal normal 14px/17px Proxima Nova;
+    color: #888888;
+    padding-bottom: 16px;
+}
+
+.p-des {
+    font: normal normal normal 14px/17px Proxima Nova;
+    color: black;
+}
+
+.h-title {
+    font: normal normal 600 16px/35px Proxima Nova;
+    color: #272727;
+}
+
+
+.h2-title {
+    text-align: left;
+    font: normal normal bold 40px/35px Proxima Nova;
+    color: #272727;
+}
+
+.montant-title {
+    padding-top: 50px;
+    text-align: left;
+    font: normal normal 600 16px/35px Proxima Nova;
+    color: #272727;
+}
+
+.p-d {
+    text-align: left;
+    font: normal normal normal 14px/17px Proxima Nova;
+    color: #888888;
+}
+
+.amount-button {
+    width: 130px;
+    height: 48px;
+    font: normal normal 600 15px/18px Proxima Nova;
+    color: #272727;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+}
+
+.amount-button:hover {
+    width: 127px;
+    height: 48px;
+    background: #02B3D70F 0% 0% no-repeat padding-box;
+    border: 1px solid #02B3D7;
+    border-radius: 10px;
+    color: #02B3D7;
+}
+
+.amount-button-active {
+    background: #02B3D70F 0% 0% no-repeat padding-box;
+    border: 1px solid #02B3D7;
+    border-radius: 10px;
+    color: #02B3D7;
+}
+
+input[type="number"] {
+    padding: 10px;
+}
+
+.amount-input {
+    width: 553px;
+    height: 58px;
+}
+
+.input-group-text {
+    height: 58px;
+    padding: 10px;
+}
+
+.quantity-title {
+    text-align: left;
+    font: normal normal 600 16px/35px Proxima Nova;
+    color: #272727;
+}
+
+.quantity-input {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    width: 232px;
+    height: 49px;
+    text-align: left;
+    font: normal normal 600 16px/20px Proxima Nova;
+    letter-spacing: 0px;
+    color: #272727;
+}
+
+.qty-button {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    width: 50px;
+    font: normal normal 600 16px/20px Proxima Nova;
+    letter-spacing: 0px;
+    color: #272727;
+}
+
+.btn-add {
+    width: 174px;
+    height: 47px;
+    background: #FFC436 0% 0% no-repeat padding-box;
+    border-radius: 60px;
+    font: normal normal 600 16px/23px Proxima Nova;
+    color: #FFFFFF;
+}
+
+.btn-checkout {
+    width: 174px;
+    height: 47px;
+    background: #02B3D7 0% 0% no-repeat padding-box;
+    border-radius: 60px;
+    font: normal normal 600 16px/23px Proxima Nova;
+    color: #FFFFFF;
+}
+
+/* Hide the original button list on mobile */
+.preset-amounts-buttons {
+    display: none;
+}
+
+.categories-list-wrapper {
+    overflow-x: visible;
+
+}
+
+.categories-list {
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+@media (max-width: 768px) {
+    .left-card {
+        order: 1;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .right-card {
+        order: 2;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 70px;
+        padding-top: 10px;
+    }
+
+    .form-section {
+        width: 100%;
+    }
+
+    .categories-list-wrapper {
+        overflow-x: auto;
+
+        /* Enables horizontal scrolling */
+    }
+
+    .categories-list {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+        /* Prevents wrapping, ensuring horizontal alignment */
+    }
+
+    .categories-list::-webkit-scrollbar {
+        display: none;
+        /* Hides scrollbar on WebKit browsers (optional) */
+    }
+
+
+    .categories-list-wrapper {
+        -webkit-overflow-scrolling: touch;
+        /* Enables momentum scrolling on mobile */
+    }
+
+    .btn-add,
+    .btn-checkout {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .preset-amounts-buttons {
+        display: block;
+    }
+
+    .preset-amounts-select {
+        display: none;
+    }
+
+    .amount-input {
+        display: none;
+    }
+
+    .h2-title {
+        display: none;
+    }
+
+    .p-des {
+        display: none;
+    }
+
+    .fixed-action-buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        z-index: 1000;
+        padding: 10px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-m {
+        color: black;
+        text-align: left;
+        font: normal normal 600 16px/23px Proxima Nova;
+    }
+}
