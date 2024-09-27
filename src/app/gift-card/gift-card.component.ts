@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { CategorySelectorComponent } from "../components/category-selector/category-selector.component";
+import { Category } from '../models/category.interface';
 
 @Component({
   selector: 'app-gift-card',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CategorySelectorComponent],
   templateUrl: './gift-card.component.html',
   styleUrl: './gift-card.component.css'
 })
@@ -14,7 +16,7 @@ export class GiftCardComponent implements OnInit {
   selectedAmount: number | null = null;
   customAmount: number | null = null;
   quantity = 1;
-  categories = [
+  categories: Category[] = [
     { name: 'Cadeau', image: 'carte_jaune.png' },
     { name: 'Remerciement', image: 'carte_verte.png' },
     { name: 'Anniversaire', image: 'carte_orange.png' },
@@ -22,10 +24,10 @@ export class GiftCardComponent implements OnInit {
     { name: 'Mariage', image: 'carte_moutarde.png' },
     { name: 'Félicitation', image: 'carte_rouge.png' }
   ];
-  selectedCategory: any = null;
+  selectedCategory: Category | null = null;
 
   ngOnInit() {
-    this.selectedCategory = this.categories[0]; 
+    this.selectedCategory = this.categories[0];
   }
 
   selectAmount(amount: number) {
@@ -43,7 +45,7 @@ export class GiftCardComponent implements OnInit {
     this.quantity++;
   }
 
-  selectCategory(category: any) {
+  selectCategory(category: Category | null) {
     this.selectedCategory = category;
   }
 

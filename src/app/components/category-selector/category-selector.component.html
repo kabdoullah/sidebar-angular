@@ -1,0 +1,8 @@
+@for (category of categories; track $index) {
+<div (click)="selectCategory(category)" class="col-6 col-sm-4 mb-2">
+    <div class="card text-center small-card">
+        <img [src]="category.image" alt="category" class="img-fluid">
+        <p class="cat-name">{{category.name}}</p>
+    </div>
+</div>
+}

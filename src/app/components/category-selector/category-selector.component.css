@@ -1,0 +1,13 @@
+.small-card {
+    background: #FAFAFA 0% 0% no-repeat padding-box;
+    border: none;
+    margin-right: 10px;
+}
+
+.cat-name {
+    text-align: center;
+    font: normal normal medium 14px/17px Proxima Nova;
+    letter-spacing: 0px;
+    color: #272727;
+    padding-top: 5px;
+}

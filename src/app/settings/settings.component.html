@@ -1,1 +1,5 @@
-<p>settings works!</p>
+<app-toast></app-toast><button type="button" class="btn btn-primary" (click)="openToast()">Open Toast From Parent</button>
+
+<!-- Utilisation du composant toast avec une fonction parent pour afficher -->
+<app-toast #appToast [message]="customMessage" [iconClass]="customIconClass" [textClass]="customTextClass">
+</app-toast>
