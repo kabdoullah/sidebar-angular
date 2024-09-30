@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CategorySelectorComponent } from "../components/category-selector/category-selector.component";
 import { Category } from '../models/category.interface';
+import { ToastComponent } from "../toast/toast.component";
 
 @Component({
   selector: 'app-gift-card',
   standalone: true,
-  imports: [CommonModule, FormsModule, CategorySelectorComponent],
+  imports: [CommonModule, FormsModule, CategorySelectorComponent, ToastComponent],
   templateUrl: './gift-card.component.html',
   styleUrl: './gift-card.component.css'
 })
@@ -25,6 +26,12 @@ export class GiftCardComponent implements OnInit {
     { name: 'Félicitation', image: 'carte_rouge.png' }
   ];
   selectedCategory: Category | null = null;
+
+  @ViewChild('appToast') appToast!: ToastComponent; // Référence au composant enfant
+
+  customMessage: string = 'This is a custom toast message!';
+  customIconClass: string = 'fa-solid fa-circle-check';
+  customTextClass: string = 'text-success';
 
   ngOnInit() {
     this.selectedCategory = this.categories[0];
@@ -51,9 +58,12 @@ export class GiftCardComponent implements OnInit {
 
   addToCart() {
     console.log(`Added to cart: ${this.selectedAmount || this.customAmount} FCFA, Quantity: ${this.quantity}`);
+    this.appToast.showToast();
   }
 
   checkout() {
     console.log('Proceeding to checkout');
   }
+
+
 }

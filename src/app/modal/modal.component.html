@@ -1,17 +1,5 @@
 <div class="modal fade" id="addBonModal" tabindex="-1" aria-labelledby="addBonModalLabel" aria-hidden="true">
-    <div class="modal-dialog ">
-        <div class="modal-content">
-            <!-- Titre du modal -->
-            <h5 class="modal-title fs-5" id="addBonModalLabel">{{ title }}</h5>
-
-            <!-- Contenu inséré dynamiquement -->
-            <ng-content></ng-content>
-
-            <!-- Boutons placés en bas -->
-            <div class="d-flex justify-content-between mt-auto pt-4 ">
-                <button type="button" class="btn custom-cancel-btn" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn custom-register-btn">Enregistrer</button>
-            </div>
-        </div>
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <ng-content></ng-content>
     </div>
 </div>

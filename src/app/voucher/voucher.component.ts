@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, signal, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, signal, SimpleChanges, ViewChild } from '@angular/core';
 import { SearchButtonComponent } from "../search-button/search-button.component";
 import { ModalComponent } from "../modal/modal.component";
 
@@ -20,6 +20,9 @@ export class VoucherComponent {
 
   activeButton = signal('all');
   isSearchActive = signal(false);
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
+  imagePreview: string | ArrayBuffer | null = null;
 
   @Input() currentPage: number = 1;
   @Input() totalPages: number = 10;
@@ -57,7 +60,7 @@ export class VoucherComponent {
   goToPreviousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--
-;
+        ;
       this.pageChange.emit(this.currentPage);
     }
   }
@@ -78,5 +81,40 @@ export class VoucherComponent {
 
   setActiveButton(button: string) {
     this.activeButton.set(button);
+  }
+
+
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
+
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+      // Vérifier le type de fichier
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+      if (!allowedTypes.includes(file.type)) {
+        alert('Format de fichier non autorisé. Veuillez choisir une image JPG, PNG ou GIF.');
+        return;
+      }
+
+      // Vérifier la taille du fichier (par exemple, limite à 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB en octets
+      if (file.size > maxSize) {
+        alert('Le fichier est trop volumineux. Veuillez choisir une image de moins de 5MB.');
+        return;
+      }
+
+      // Créer un aperçu de l'image
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.imagePreview = e.target?.result as string;
+      };
+      reader.readAsDataURL(file);
+
+      // Ici, vous pouvez ajouter la logique pour envoyer le fichier à votre serveur
+      // this.uploadFile(file);
+    }
   }
 }
